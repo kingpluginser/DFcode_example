@@ -13,7 +13,8 @@ def post_name():
     print('\npost name')
     # http://pythonscraping.com/pages/files/form.html
     data = {'firstname': '莫烦', 'lastname': '周'}
-    r = requests.post('http://pythonscraping.com/files/processing.php', data=data)
+    r = requests.post(
+        'http://pythonscraping.com/files/processing.php', data=data)
     print(r.text)
 
 
@@ -21,7 +22,8 @@ def post_image():
     print('\npost image')
     # http://pythonscraping.com/files/form2.html
     file = {'uploadFile': open('./image.png', 'rb')}
-    r = requests.post('http://pythonscraping.com/files/processing2.php', files=file)
+    r = requests.post(
+        'http://pythonscraping.com/files/processing2.php', files=file)
     print(r.text)
 
 
@@ -29,10 +31,12 @@ def post_login():
     print('\npost login')
     # http://pythonscraping.com/pages/cookies/login.html
     payload = {'username': 'Morvan', 'password': 'password'}
-    r = requests.post('http://pythonscraping.com/pages/cookies/welcome.php', data=payload)
+    r = requests.post(
+        'http://pythonscraping.com/pages/cookies/welcome.php', data=payload)
     print(r.cookies.get_dict())
     # http://pythonscraping.com/pages/cookies/profile.php
-    r = requests.get('http://pythonscraping.com/pages/cookies/profile.php', cookies=r.cookies)
+    r = requests.get(
+        'http://pythonscraping.com/pages/cookies/profile.php', cookies=r.cookies)
     print(r.text)
 
 
@@ -41,7 +45,8 @@ def session_login():
     # http://pythonscraping.com/pages/cookies/login.html
     session = requests.Session()
     payload = {'username': 'Morvan', 'password': 'password'}
-    r = session.post('http://pythonscraping.com/pages/cookies/welcome.php', data=payload)
+    r = session.post(
+        'http://pythonscraping.com/pages/cookies/welcome.php', data=payload)
     print(r.cookies.get_dict())
     r = session.get("http://pythonscraping.com/pages/cookies/profile.php")
     print(r.text)

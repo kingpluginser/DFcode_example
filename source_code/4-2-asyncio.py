@@ -6,7 +6,7 @@ from urllib.request import urljoin
 import re
 import multiprocessing as mp
 
-base_url = "https://morvanzhou.github.io/"
+base_url = "https://mofanpy.com/"
 # base_url = "http://127.0.0.1:4000/"
 
 # DON'T OVER CRAWL THE WEBSITE OR YOU MAY NEVER VISIT AGAIN
@@ -46,7 +46,8 @@ async def main(loop):
             finished, unfinished = await asyncio.wait(tasks)
             htmls = [f.result() for f in finished]
 
-            parse_jobs = [pool.apply_async(parse, args=(html,)) for html in htmls]
+            parse_jobs = [pool.apply_async(
+                parse, args=(html,)) for html in htmls]
             results = [j.get() for j in parse_jobs]
 
             seen.update(unseen)

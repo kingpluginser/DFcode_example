@@ -15,13 +15,14 @@ def parse(html):
     soup = BeautifulSoup(html, 'lxml')
     urls = soup.find_all('a', {"href": re.compile('^/.+?/$')})
     title = soup.find('h1').get_text().strip()
-    page_urls = set([urljoin(base_url, url['href']) for url in urls])   # remove duplication
+    page_urls = set([urljoin(base_url, url['href'])
+                    for url in urls])   # remove duplication
     url = soup.find('meta', {'property': "og:url"})['content']
     return title, page_urls, url
 
 
 if __name__ == '__main__':
-    base_url = 'https://morvanzhou.github.io/'
+    base_url = 'https://mofanpy.com/'
     # base_url = "http://127.0.0.1:4000/"
 
     # DON'T OVER CRAWL THE WEBSITE OR YOU MAY NEVER VISIT AGAIN
@@ -41,21 +42,22 @@ if __name__ == '__main__':
             break
         print('\nDistributed Crawling...')
         crawl_jobs = [pool.apply_async(crawl, args=(url,)) for url in unseen]
-        htmls = [j.get() for j in crawl_jobs]                                       # request connection
+        # request connection
+        htmls = [j.get() for j in crawl_jobs]
         htmls = [h for h in htmls if h is not None]     # remove None
 
         print('\nDistributed Parsing...')
         parse_jobs = [pool.apply_async(parse, args=(html,)) for html in htmls]
-        results = [j.get() for j in parse_jobs]                                     # parse html
+        # parse html
+        results = [j.get() for j in parse_jobs]
 
         print('\nAnalysing...')
         seen.update(unseen)
         unseen.clear()
 
         for title, page_urls, url in results:
-                print(count, title, url)
-                count += 1
-                unseen.update(page_urls - seen)
+            print(count, title, url)
+            count += 1
+            unseen.update(page_urls - seen)
 
     print('Total time: %.1f s' % (time.time()-t1, ))
-

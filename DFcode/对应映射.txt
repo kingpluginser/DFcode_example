@@ -1,0 +1,28 @@
+ALM数据为主
+对策（redmine） -->Issues_问题对策
+原因（redmine）-->	Issues_问题原因
+redmine状态  -->Issues_状态
+qis号（公式） --> 一元表序号
+0状态问题统计（公式） --> Issues_主题
+问题分类 -->Issues_问题分类
+
+
+redmine单号 --> Issues_#
+状态 --> =VLOOKUP(Ci,QIS表格!D:G,4,0)i为当前行号
+改善状态 --> =VLOOKUP(Ci,QIS表格!D:G,4,0) i为当前行号
+问题来源 --> 问题来源
+天数 --> null
+经办人 --> =VLOOKUP(Ui,博泰jira数据!A:M,13,0) i为当前行号
+责任人 --> 当前任务负责人
+问题提出人--> null
+问题频次--> null
+问题录入时间 --> Issues_开始日期
+问题发现时间--> 发起流程时间
+故障里程 --> null
+故障车机版本 --> null
+描述 --> 不符合现象
+重要度 --> 重要度
+故障部位 --> null
+样车编号 --> null
+QIS --> 一元表序号
+所属模块 --> Issues_责任模块

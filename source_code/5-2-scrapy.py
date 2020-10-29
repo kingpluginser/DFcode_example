@@ -4,7 +4,7 @@ import scrapy
 class MofanSpider(scrapy.Spider):
     name = "mofan"
     start_urls = [
-        'https://morvanzhou.github.io/',
+        'https://mofanpy.com/',
     ]
     # unseen = set()
     # seen = set()      # we don't need these two as scrapy will deal with them automatically
@@ -15,9 +15,11 @@ class MofanSpider(scrapy.Spider):
             'url': response.url,
         }
 
-        urls = response.css('a::attr(href)').re(r'^/.+?/$')     # find all sub urls
+        urls = response.css('a::attr(href)').re(
+            r'^/.+?/$')     # find all sub urls
         for url in urls:
-            yield response.follow(url, callback=self.parse)     # it will filter duplication automatically
+            # it will filter duplication automatically
+            yield response.follow(url, callback=self.parse)
 
 
 # lastly, run this in terminal

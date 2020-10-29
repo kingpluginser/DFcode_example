@@ -1,7 +1,7 @@
 import os
 os.makedirs('./img/', exist_ok=True)
 
-IMAGE_URL = "https://morvanzhou.github.io/static/img/description/learning_step_flowchart.png"
+IMAGE_URL = "https://mofanpy.com/static/img/description/learning_step_flowchart.png"
 
 
 def urllib_download():
@@ -31,4 +31,3 @@ request_download()
 print('download image2')
 chunk_download()
 print('download image3')
-
