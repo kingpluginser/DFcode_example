@@ -2,8 +2,12 @@ import re
 from urllib.request import urlopen
 
 # if has Chinese, apply decode()
+<<<<<<< HEAD
 html = urlopen(
     "https://mofanpy.com/static/scraping/basic-structure.html").read().decode('utf-8')
+=======
+html = urlopen("https://mofanpy.com/static/scraping/basic-structure.html").read().decode('utf-8')
+>>>>>>> 501e9862249d3bb00ae77026ff1b4eeb4b4a48fb
 print(html)
 
 
@@ -22,4 +26,8 @@ print("\nPage paragraph is: ", res[0])
 
 res = re.findall(r'href="(.*?)"', html)
 print("\nAll links: ", res)
+<<<<<<< HEAD
 # All links:  ['https://mofanpy.com/static/img/description/tab_icon.png', 'https://mofanpy.com/', 'https://mofanpy.com/tutorials/scraping']
+=======
+# All links:  ['https://mofanpy.com/static/img/description/tab_icon.png', 'https://mofanpy.com/', 'https://mofanpy.com/tutorials/scraping']
+>>>>>>> 501e9862249d3bb00ae77026ff1b4eeb4b4a48fb

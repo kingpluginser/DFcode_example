@@ -2,8 +2,12 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
 # if has Chinese, apply decode()
+<<<<<<< HEAD
 html = urlopen(
     "https://mofanpy.com/static/scraping/table.html").read().decode('utf-8')
+=======
+html = urlopen("https://mofanpy.com/static/scraping/table.html").read().decode('utf-8')
+>>>>>>> 501e9862249d3bb00ae77026ff1b4eeb4b4a48fb
 
 soup = BeautifulSoup(html, features='lxml')
 

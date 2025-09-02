@@ -11,8 +11,12 @@ chrome_options.add_argument("--headless")       # define headless
 # add the option when creating driver
 driver = webdriver.Chrome(chrome_options=chrome_options)
 driver.get("https://mofanpy.com/")
+<<<<<<< HEAD
 driver.find_element_by_xpath(
     u"//img[@alt='强化学习 (Reinforcement Learning)']").click()
+=======
+driver.find_element_by_xpath(u"//img[@alt='强化学习 (Reinforcement Learning)']").click()
+>>>>>>> 501e9862249d3bb00ae77026ff1b4eeb4b4a48fb
 driver.find_element_by_link_text("About").click()
 driver.find_element_by_link_text(u"赞助").click()
 driver.find_element_by_link_text(u"教程 ▾").click()
