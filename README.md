@@ -5,6 +5,6 @@
 ## python 环境
 
 首先，你需要安装以下库：
-\n pandas
-\n numpy
-\n tdmp
+pandas
+numpy
+tdmp
